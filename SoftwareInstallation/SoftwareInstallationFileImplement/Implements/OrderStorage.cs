@@ -29,7 +29,6 @@ namespace SoftwareInstallationFileImplement.Implements
             {
                 return null;
             }
-
             return source.Orders
                .Where(recOrder => recOrder.PackageId == model.PackageId)
                .Select(CreateModel)
@@ -41,7 +40,6 @@ namespace SoftwareInstallationFileImplement.Implements
             {
                 return null;
             }
-
             Order order = source.Orders.FirstOrDefault(recOder => recOder.Id == model.Id);
             return order != null ? CreateModel(order) : null;
         }

@@ -31,6 +31,12 @@ namespace SoftwareInstallationFileImplement
             }
             return instance;
         }
+        public static void SaveAll()
+        {
+            GetInstance().SaveComponents();
+            GetInstance().SaveOrders();
+            GetInstance().SavePackages();
+        }
         ~FileDataListSingleton()
         {
             SaveComponents();

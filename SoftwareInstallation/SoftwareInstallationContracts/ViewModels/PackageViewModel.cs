@@ -16,6 +16,7 @@ namespace SoftwareInstallationContracts.ViewModels
         public string PackageName { get; set; }
         [DisplayName("Цена")]
         public decimal Price { get; set; }
+        [DisplayName("Компоненты")]
         public Dictionary<int, (string, int)> PackageComponents { get; set; }
     }
 }

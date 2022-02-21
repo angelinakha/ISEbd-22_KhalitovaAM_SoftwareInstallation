@@ -42,7 +42,7 @@ namespace SoftwareInstallationFileImplement.Implements
             }
             var component = source.Components
             .FirstOrDefault(rec => rec.ComponentName == model.ComponentName ||
-           rec.Id == model.Id);
+            rec.Id == model.Id);
             return component != null ? CreateModel(component) : null;
         }
         public void Insert(ComponentBindingModel model)
