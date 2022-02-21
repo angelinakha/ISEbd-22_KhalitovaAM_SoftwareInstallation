@@ -16,5 +16,6 @@ namespace SoftwareInstallationContracts.StoragesContracts
         void Insert(WarehouseBindingModel model);
         void Update(WarehouseBindingModel model);
         void Delete(WarehouseBindingModel model);
+        bool WriteOffFromWarehouses(Dictionary<int, (string, int)> components, int writeOffCount);
     }
 }
