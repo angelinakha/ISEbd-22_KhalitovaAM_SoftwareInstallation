@@ -10,7 +10,7 @@ using SoftwareInstallationFileImplement.Models;
 
 namespace SoftwareInstallationFileImplement.Implements
 {
-    public class PackageStorage
+    public class PackageStorage : IPackageStorage
     {
         private readonly FileDataListSingleton source;
         public PackageStorage()
