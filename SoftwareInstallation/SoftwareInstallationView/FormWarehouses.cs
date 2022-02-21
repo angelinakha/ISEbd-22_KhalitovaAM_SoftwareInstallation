@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
-using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
-
+using SoftwareInstallationContracts.BindingModels;
+using SoftwareInstallationContracts.ViewModels;
 
 namespace SoftwareInstallationView
 {
-    public partial class FormComponents : Form
+    public partial class FormWarehouses : Form
     {
-        private readonly IComponentLogic _logic;
-        public FormComponents(IComponentLogic logic)
+        private readonly IWarehouseLogic _logic;
+
+        public FormWarehouses(IWarehouseLogic logic)
         {
             InitializeComponent();
             _logic = logic;
         }
 
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormWarehouses_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -39,6 +40,7 @@ namespace SoftwareInstallationView
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[4].Visible = false;        
                 }
             }
             catch (Exception ex)
@@ -50,7 +52,7 @@ namespace SoftwareInstallationView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormComponent>();
+            var form = Program.Container.Resolve<FormWarehouse>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -61,13 +63,13 @@ namespace SoftwareInstallationView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Program.Container.Resolve<FormComponent>();
+                var form = Program.Container.Resolve<FormWarehouse>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
                 }
-            }
+            }       
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace SoftwareInstallationView
                    Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        _logic.Delete(new ComponentBindingModel { Id = id });
+                        _logic.Delete(new WarehouseBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
