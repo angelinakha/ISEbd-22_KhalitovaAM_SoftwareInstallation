@@ -59,7 +59,15 @@ namespace SoftwareInstallationView
 
         private void buttonRef_Click(object sender, EventArgs e)
         {
-            LoadData();
+            if (dataGridView.SelectedRows.Count == 1)
+            {
+                var form = Program.Container.Resolve<FormPackage>();
+                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -87,15 +95,7 @@ namespace SoftwareInstallationView
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                var form = Program.Container.Resolve<FormPackage>();
-                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    LoadData();
-                }
-            }
+            LoadData();
         }
     }
 }

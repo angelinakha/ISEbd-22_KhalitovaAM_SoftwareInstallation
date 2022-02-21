@@ -109,6 +109,7 @@ namespace SoftwareInstallationView
             }
         }
 
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
