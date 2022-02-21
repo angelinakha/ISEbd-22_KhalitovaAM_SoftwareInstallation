@@ -9,7 +9,8 @@ using Unity.Lifetime;
 using SoftwareInstallationBusinessLogic.BusinessLogics;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
 using SoftwareInstallationContracts.StoragesContracts;
-using SoftwareInstallationListImplement.Implements;
+using SoftwareInstallationFileImplement.Implements;
+using SoftwareInstallationFileImplement;
 
 namespace SoftwareInstallationView
 {
@@ -36,7 +37,14 @@ namespace SoftwareInstallationView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ApplicationExit += ApplicationExit;
+            AppDomain.CurrentDomain.UnhandledException += (o, e) => { if (e.IsTerminating) ApplicationExit(null, null); };
+            Application.ThreadException += (o, e) => { Application.Exit(); };
             Application.Run(Container.Resolve<FormMain>());        
+        }
+        private static void ApplicationExit(object sender, EventArgs e)
+        {
+            FileDataListSingleton.SaveAll();
         }
         private static IUnityContainer BuildUnityContainer()
         {

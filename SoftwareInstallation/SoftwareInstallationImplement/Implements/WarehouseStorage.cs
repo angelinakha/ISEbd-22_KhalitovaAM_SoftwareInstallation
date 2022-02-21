@@ -156,6 +156,9 @@ namespace SoftwareInstallationListImplement.Implements
                 WarehouseComponents = warehouseComponents
             };
         }
-
+        public bool WriteOffFromWarehouses(Dictionary<int, (string, int)> components, int writeOffCount)
+        {
+            return false;
+        }
     }
 }
