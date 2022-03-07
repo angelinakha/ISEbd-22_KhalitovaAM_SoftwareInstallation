@@ -94,7 +94,6 @@ namespace SoftwareInstallationView
                 }
             }
         }
-
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             LoadData();

@@ -7,7 +7,6 @@ using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.StoragesContracts;
 using SoftwareInstallationContracts.ViewModels;
 using SoftwareInstallationFileImplement.Models;
-using SoftwareInstallationFileImplement;
 
 namespace SoftwareInstallationFileImplement.Implements
 {
