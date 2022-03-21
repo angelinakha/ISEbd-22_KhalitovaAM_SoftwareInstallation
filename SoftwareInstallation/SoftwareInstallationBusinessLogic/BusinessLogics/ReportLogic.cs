@@ -37,19 +37,19 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             var components = _componentStorage.GetFullList();
             var packages = _packageStorage.GetFullList();
             var list = new List<ReportPackageComponentViewModel>();
-            foreach (var component in components)
+            foreach (var package in packages)
             {
                 var record = new ReportPackageComponentViewModel
                 {
-                    ComponentName = component.ComponentName,
-                    Packages = new List<Tuple<string, int>>(),
+                    PackageName = package.PackageName,
+                    Components = new List<Tuple<string, int>>(),
                     TotalCount = 0
                 };
-                foreach (var package in packages)
+                foreach (var component in components)
                 {
                     if (package.PackageComponents.ContainsKey(component.Id))
                     {
-                        record.Packages.Add(new Tuple<string, int>(package.PackageName, package.PackageComponents[component.Id].Item2));
+                        record.Components.Add(new Tuple<string, int>(component.ComponentName, package.PackageComponents[component.Id].Item2));
                         record.TotalCount += package.PackageComponents[component.Id].Item2;
                     }
                 }
@@ -82,7 +82,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 FileName = model.FileName,
                 Title = "Список компонент",
-                Components = _componentStorage.GetFullList()
+                Packages = _packageStorage.GetFullList()
             });
         }
         // Сохранение компонент с указаеним продуктов в файл-Excel

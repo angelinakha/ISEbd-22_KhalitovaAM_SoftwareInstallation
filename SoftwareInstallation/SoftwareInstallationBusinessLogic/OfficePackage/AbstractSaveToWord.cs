@@ -23,12 +23,19 @@ namespace SoftwareInstallationBusinessLogic.OfficePackage
                     JustificationType = WordJustificationType.Center
                 }
             });
-            foreach (var component in info.Components)
+            foreach (var package in info.Packages)
             {
                 CreateParagraph(new WordParagraph
                 {
                     Texts = new List<(string, WordTextProperties)> {
-                        (component.ComponentName, new WordTextProperties { Size = "24", }) },
+                       (package.PackageName + ": ", new WordTextProperties {
+                        Size = "24",
+                        Bold = true
+                        }),
+                        (Convert.ToInt32(package.Price).ToString(), new WordTextProperties {
+                        Size = "24"
+                        })
+                    },
                     TextProperties = new WordTextProperties
                     {
                         Size = "24",

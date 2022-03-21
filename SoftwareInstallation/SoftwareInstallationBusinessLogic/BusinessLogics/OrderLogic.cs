@@ -54,7 +54,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не найден");
             }
-            if (order.Status != OrderStatus.Принят)
+            if (!order.Status.Equals("Принят"))
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
@@ -79,7 +79,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не найден");
             }
-            if (order.Status != OrderStatus.Выполняется)
+            if (!order.Status.Equals("Выполняется"))
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
@@ -101,7 +101,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не найден");
             }
-            if (order.Status != OrderStatus.Готов)
+            if (!order.Status.Equals("Готов"))
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }

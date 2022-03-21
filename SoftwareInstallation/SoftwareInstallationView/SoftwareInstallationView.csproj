@@ -23,4 +23,10 @@
     <ProjectReference Include="..\SoftwareInstallationImplement\SoftwareInstallationListImplement.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ReportOrder.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
