@@ -15,6 +15,9 @@ namespace SoftwareInstallationContracts.ViewModels
         public int PackageId { get; set; }
         [DisplayName("Пакеты установки")]
         public string PackageName { get; set; }
+        public int ClientId { get; set; }
+        [DisplayName("ФИО клиента")]
+        public string ClientFIO { get; set; }
         [DisplayName("Количество")]
         public int Count { get; set; }
         [DisplayName("Сумма")]
