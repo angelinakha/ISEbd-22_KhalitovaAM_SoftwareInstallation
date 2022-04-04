@@ -22,5 +22,6 @@ namespace SoftwareInstallationDatabaseImplement
         public virtual DbSet<Warehouse> Warehouses { set; get; }
         public virtual DbSet<WarehouseComponent> WarehouseComponents { set; get; }
 
+        public virtual DbSet<Client> Clients { set; get; }
     }
 }
