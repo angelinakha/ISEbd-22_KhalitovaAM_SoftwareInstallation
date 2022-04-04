@@ -18,11 +18,13 @@ namespace SoftwareInstallationView
     {
         private readonly IPackageLogic _logicP;
         private readonly IOrderLogic _logicO;
-        public FormCreateOrder(IPackageLogic logicP, IOrderLogic logicO)
+        private readonly IClientLogic _logicC;
+        public FormCreateOrder(IPackageLogic logicP, IOrderLogic logicO, IClientLogic logicC)
         {
             InitializeComponent();
             _logicP = logicP;
             _logicO = logicO;
+            _logicC = logicC;
         }
 
         private void FormCreateOrder_Load(object sender, EventArgs e)
@@ -36,6 +38,14 @@ namespace SoftwareInstallationView
                     comboBoxPackage.ValueMember = "Id";
                     comboBoxPackage.DataSource = list;
                     comboBoxPackage.SelectedItem = null;                
+                }
+                var listC = _logicC.Read(null);
+                foreach (var client in listC)
+                {
+                    comboBoxClient.DataSource = listC;
+                    comboBoxClient.DisplayMember = "ClientFIO";
+                    comboBoxClient.ValueMember = "Id";
+                    comboBoxClient.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -93,6 +103,7 @@ namespace SoftwareInstallationView
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
                     PackageId = Convert.ToInt32(comboBoxPackage.SelectedValue),
+                    ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
