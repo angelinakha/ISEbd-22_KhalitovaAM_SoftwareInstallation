@@ -39,7 +39,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             });
             if (element != null && element.Id != model.Id)
             {
-                throw new Exception("Клиент с такой почтой уже есть");
+                throw new Exception("Клиент с таким логином уже есть");
             }
             if (model.Id.HasValue)
             {

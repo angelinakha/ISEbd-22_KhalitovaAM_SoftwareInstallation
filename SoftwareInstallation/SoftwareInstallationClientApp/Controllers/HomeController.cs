@@ -138,7 +138,7 @@ namespace SoftwareInstallationClientApp.Controllers
         [HttpPost]
         public decimal Calc(decimal count, int package)
         {
-            PackageViewModel pack = APIClient.GetRequest<PackageViewModel>($"api/main/getproduct?productId={package}");
+            PackageViewModel pack = APIClient.GetRequest<PackageViewModel>($"api/main/getproduct?packageId={package}");
             return count * pack.Price;
         }
 

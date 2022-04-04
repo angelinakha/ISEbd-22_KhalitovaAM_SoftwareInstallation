@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoftwareInstallationDatabaseImplement;
 
 namespace SoftwareInstallationDatabaseImplement.Migrations
 {
     [DbContext(typeof(SoftwareInstallationDatabase))]
-    partial class SoftwareInstallationDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20220404064023_initialcreate")]
+    partial class initialcreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,57 +142,15 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
                     b.ToTable("PackageComponents");
                 });
 
-            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Warehouse", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ResponsiblePerson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WarehouseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Warehouses");
-                });
-
-            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.WarehouseComponent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ComponentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComponentId");
-
-                    b.HasIndex("WarehouseId");
-
-                    b.ToTable("WarehouseComponents");
-                });
-
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", null)
+                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", "Package")
                         .WithMany("Order")
                         .HasForeignKey("PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -220,23 +180,9 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
                     b.Navigation("Package");
                 });
 
-            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.WarehouseComponent", b =>
+            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Client", b =>
                 {
-                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Component", "Component")
-                        .WithMany()
-                        .HasForeignKey("ComponentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Warehouse", "Warehouse")
-                        .WithMany("WarehouseComponents")
-                        .HasForeignKey("WarehouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Component");
-
-                    b.Navigation("Warehouse");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Component", b =>
@@ -249,11 +195,6 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("PackageComponents");
-                });
-
-            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Warehouse", b =>
-                {
-                    b.Navigation("WarehouseComponents");
                 });
 #pragma warning restore 612, 618
         }
