@@ -18,6 +18,8 @@ namespace SoftwareInstallationDatabaseImplement.Models
 
         public virtual Client Client { get; set; }
         public int ClientId { get; set; }
+        public int ImplementerId { get; set; }
+        public virtual Implementer Implementer { get; set; }
         [Required]
         public int Count { get; set; }
         [Required]
