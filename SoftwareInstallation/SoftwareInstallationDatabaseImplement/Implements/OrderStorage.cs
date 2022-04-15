@@ -111,8 +111,8 @@ namespace SoftwareInstallationDatabaseImplement.Implements
         private static Order CreateModel(OrderBindingModel model, Order order)
         {
             order.PackageId = model.PackageId;
-            order.ClientId = model.ClientId;
-            order.ImplementerId = model.ImplementerId;
+            order.ClientId = (int)model.ClientId;
+            order.ImplementerId = (int)model.ImplementerId;
             order.Count = model.Count;
             order.Sum = model.Sum;
             order.Status = model.Status;
@@ -128,8 +128,7 @@ namespace SoftwareInstallationDatabaseImplement.Implements
                 Id = order.Id,
                 PackageId = order.PackageId,
                 PackageName = context.Packages.FirstOrDefault(packageName => packageName.Id == order.PackageId)?.PackageName,
-                ClientId = order.ClientId,
-                ClientFIO = order.ClientFIO,
+                ClientId = order.ClientId,              
                 ImplementerId = order.ImplementerId,
                 ImplementerFIO = order.Implementer.ImplementerFIO,
                 Count = order.Count,
