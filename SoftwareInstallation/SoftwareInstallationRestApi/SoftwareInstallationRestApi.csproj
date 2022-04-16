@@ -11,6 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\SoftwareInstallationBusinessLogic\SoftwareInstallationBusinessLogic.csproj" />
     <ProjectReference Include="..\SoftwareInstallationDatabaseImplement\SoftwareInstallationDatabaseImplement.csproj" />
+    <ProjectReference Include="..\SoftwareInstallationContracts\SoftwareInstallationContracts.csproj" />
+
   </ItemGroup>
 
 </Project>

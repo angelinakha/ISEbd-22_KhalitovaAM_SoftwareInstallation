@@ -30,11 +30,18 @@ namespace SoftwareInstallationView
         private void InitializeComponent()
         {
             this.buttonCreateOrder = new System.Windows.Forms.Button();
-            this.buttonTakeOrderInWork = new System.Windows.Forms.Button();
-            this.buttonOrderReady = new System.Windows.Forms.Button();
             this.buttonIssuedOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdPackage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,15 +52,8 @@ namespace SoftwareInstallationView
             this.списокКомпонентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыПоПакетамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdPackage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,29 +68,9 @@ namespace SoftwareInstallationView
             this.buttonCreateOrder.UseVisualStyleBackColor = true;
             this.buttonCreateOrder.Click += new System.EventHandler(this.buttonCreateOrder_Click);
             // 
-            // buttonTakeOrderInWork
-            // 
-            this.buttonTakeOrderInWork.Location = new System.Drawing.Point(710, 98);
-            this.buttonTakeOrderInWork.Name = "buttonTakeOrderInWork";
-            this.buttonTakeOrderInWork.Size = new System.Drawing.Size(153, 32);
-            this.buttonTakeOrderInWork.TabIndex = 1;
-            this.buttonTakeOrderInWork.Text = "Отдать на выполнение";
-            this.buttonTakeOrderInWork.UseVisualStyleBackColor = true;
-            this.buttonTakeOrderInWork.Click += new System.EventHandler(this.buttonTakeOrderInWork_Click);
-            // 
-            // buttonOrderReady
-            // 
-            this.buttonOrderReady.Location = new System.Drawing.Point(710, 149);
-            this.buttonOrderReady.Name = "buttonOrderReady";
-            this.buttonOrderReady.Size = new System.Drawing.Size(153, 32);
-            this.buttonOrderReady.TabIndex = 2;
-            this.buttonOrderReady.Text = "Заказ готов";
-            this.buttonOrderReady.UseVisualStyleBackColor = true;
-            this.buttonOrderReady.Click += new System.EventHandler(this.buttonOrderReady_Click);
-            // 
             // buttonIssuedOrder
             // 
-            this.buttonIssuedOrder.Location = new System.Drawing.Point(710, 202);
+            this.buttonIssuedOrder.Location = new System.Drawing.Point(710, 92);
             this.buttonIssuedOrder.Name = "buttonIssuedOrder";
             this.buttonIssuedOrder.Size = new System.Drawing.Size(153, 32);
             this.buttonIssuedOrder.TabIndex = 3;
@@ -100,7 +80,7 @@ namespace SoftwareInstallationView
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(710, 255);
+            this.buttonRef.Location = new System.Drawing.Point(710, 145);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(153, 32);
             this.buttonRef.TabIndex = 4;
@@ -128,12 +108,62 @@ namespace SoftwareInstallationView
             this.dataGridView.Size = new System.Drawing.Size(701, 303);
             this.dataGridView.TabIndex = 5;
             // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "ColumnId";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.Visible = false;
+            this.ColumnId.Width = 10;
+            // 
+            // ColumnIdPackage
+            // 
+            this.ColumnIdPackage.HeaderText = "ColumnIdPackage";
+            this.ColumnIdPackage.Name = "ColumnIdPackage";
+            this.ColumnIdPackage.Visible = false;
+            this.ColumnIdPackage.Width = 10;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Пакеты установок";
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnClient
+            // 
+            this.ColumnClient.HeaderText = "Клиент";
+            this.ColumnClient.Name = "ColumnClient";
+            // 
+            // ColumnCount
+            // 
+            this.ColumnCount.HeaderText = "Количество";
+            this.ColumnCount.Name = "ColumnCount";
+            // 
+            // ColumnSum
+            // 
+            this.ColumnSum.HeaderText = "Сумма";
+            this.ColumnSum.Name = "ColumnSum";
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.HeaderText = "Статус";
+            this.ColumnStatus.Name = "ColumnStatus";
+            // 
+            // ColumnDateCreate
+            // 
+            this.ColumnDateCreate.HeaderText = "Дата создания";
+            this.ColumnDateCreate.Name = "ColumnDateCreate";
+            // 
+            // ColumnDateEnd
+            // 
+            this.ColumnDateEnd.HeaderText = "Дата выполнения";
+            this.ColumnDateEnd.Name = "ColumnDateEnd";
+            // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
             this.пополнениеСкладаToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+            this.запускРаботToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(875, 24);
@@ -145,7 +175,8 @@ namespace SoftwareInstallationView
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
             this.пакетыУстановокToolStripMenuItem,
-            this.клиентыToolStripMenuItem});
+            this.клиентыToolStripMenuItem,
+            this.исполнителиToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -207,54 +238,19 @@ namespace SoftwareInstallationView
             this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
             this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click);
             // 
-            // ColumnId
+            // исполнителиToolStripMenuItem
             // 
-            this.ColumnId.HeaderText = "ColumnId";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 10;
+            this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
+            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.исполнителиToolStripMenuItem.Text = "Исполнители";
+            this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
             // 
-            // ColumnIdPackage
+            // запускРаботToolStripMenuItem
             // 
-            this.ColumnIdPackage.HeaderText = "ColumnIdPackage";
-            this.ColumnIdPackage.Name = "ColumnIdPackage";
-            this.ColumnIdPackage.Visible = false;
-            this.ColumnIdPackage.Width = 10;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Пакеты установок";
-            this.ColumnName.Name = "ColumnName";
-            // 
-            // ColumnClient
-            // 
-            this.ColumnClient.HeaderText = "Клиент";
-            this.ColumnClient.Name = "ColumnClient";
-            // 
-            // ColumnCount
-            // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.Name = "ColumnCount";
-            // 
-            // ColumnSum
-            // 
-            this.ColumnSum.HeaderText = "Сумма";
-            this.ColumnSum.Name = "ColumnSum";
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.HeaderText = "Статус";
-            this.ColumnStatus.Name = "ColumnStatus";
-            // 
-            // ColumnDateCreate
-            // 
-            this.ColumnDateCreate.HeaderText = "Дата создания";
-            this.ColumnDateCreate.Name = "ColumnDateCreate";
-            // 
-            // ColumnDateEnd
-            // 
-            this.ColumnDateEnd.HeaderText = "Дата выполнения";
-            this.ColumnDateEnd.Name = "ColumnDateEnd";
+            this.запускРаботToolStripMenuItem.Name = "запускРаботToolStripMenuItem";
+            this.запускРаботToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.запускРаботToolStripMenuItem.Text = "Запуск работ";
+            this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -264,8 +260,6 @@ namespace SoftwareInstallationView
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonIssuedOrder);
-            this.Controls.Add(this.buttonOrderReady);
-            this.Controls.Add(this.buttonTakeOrderInWork);
             this.Controls.Add(this.buttonCreateOrder);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -283,8 +277,6 @@ namespace SoftwareInstallationView
         #endregion
 
         private System.Windows.Forms.Button buttonCreateOrder;
-        private System.Windows.Forms.Button buttonTakeOrderInWork;
-        private System.Windows.Forms.Button buttonOrderReady;
         private System.Windows.Forms.Button buttonIssuedOrder;
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -307,5 +299,7 @@ namespace SoftwareInstallationView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
+        private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
     }
 }
