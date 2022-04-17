@@ -17,12 +17,13 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
         private readonly IComponentStorage _componentStorage;
         private readonly IPackageStorage _packageStorage;
         private readonly IOrderStorage _orderStorage;
+        private readonly IWarehouseStorage _warehouseStorage;
         private readonly AbstractSaveToExcel _saveToExcel;
         private readonly AbstractSaveToWord _saveToWord;
         private readonly AbstractSaveToPdf _saveToPdf;
 
         public ReportLogic(IPackageStorage packageStorage, IComponentStorage componentStorage, IOrderStorage orderStorage,
-        AbstractSaveToExcel saveToExcel, AbstractSaveToWord saveToWord, AbstractSaveToPdf saveToPdf)
+        AbstractSaveToExcel saveToExcel, AbstractSaveToWord saveToWord, AbstractSaveToPdf saveToPdf, IWarehouseStorage warehouseStorage)
         {
             _packageStorage = packageStorage;
             _componentStorage = componentStorage;
@@ -30,6 +31,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             _saveToExcel = saveToExcel;
             _saveToWord = saveToWord;
             _saveToPdf = saveToPdf;
+            _warehouseStorage = warehouseStorage;
         }
         // Получение списка компонент с указанием, в каких изделиях используются
         public List<ReportPackageComponentViewModel> GetPackageComponent()
@@ -105,6 +107,77 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
                 DateFrom = model.DateFrom.Value,
                 DateTo = model.DateTo.Value,
                 Orders = GetOrders(model)
+            });
+        }
+        /// Получение списка компонент с указанием, на каких складах
+        public List<ReportWarehouseComponentViewModel> GetWarehouseComponent()
+        {
+            var components = _componentStorage.GetFullList();
+            var warehouses = _warehouseStorage.GetFullList();
+            var records = new List<ReportWarehouseComponentViewModel>();
+            foreach (var warehouse in warehouses)
+            {
+                var record = new ReportWarehouseComponentViewModel
+                {
+                    WarehouseName = warehouse.WarehouseName,
+                    Components = new List<Tuple<string, int>>(),
+                    TotalCount = 0
+                };
+                foreach (var component in components)
+                {
+                    if (warehouse.WarehouseComponents.ContainsKey(component.Id))
+                    {
+                        record.Components.Add(new Tuple<string, int>(
+                            component.ComponentName, warehouse.WarehouseComponents[component.Id].Item2));
+
+                        record.TotalCount += warehouse.WarehouseComponents[component.Id].Item2;
+                    }
+                }
+                records.Add(record);
+            }
+            return records;
+        }
+        /// Получение списка заказов за весь период
+        public List<ReportOrdersPeriodViewModel> GetOrdersPeriod()
+        {
+            return _orderStorage.GetFullList()
+                .GroupBy(order => order.DateCreate.ToShortDateString())
+                .Select(rec => new ReportOrdersPeriodViewModel
+                {
+                    Date = Convert.ToDateTime(rec.Key),
+                    Count = rec.Count(),
+                    Sum = rec.Sum(order => order.Sum)
+                })
+          .ToList();
+        }
+        /// Сохранение складов в файл-Word
+        public void SaveWarehousesToWordFile(ReportBindingModel model)
+        {
+            _saveToWord.CreateDocWarehouses(new WordInfoWarehouse
+            {
+                FileName = model.FileName,
+                Title = "Список складов",
+                Warehouses = _warehouseStorage.GetFullList()
+            });
+        }
+        /// Сохранение компонент с указанием складов в файл-Excel
+        public void SaveWarehouseComponentToExcelFile(ReportBindingModel model)
+        {
+            _saveToExcel.CreateReportWarehouses(new ExcelInfoWarehouse
+            {
+                FileName = model.FileName,
+                Title = "Список cкладов",
+                WarehouseComponents = GetWarehouseComponent()
+            });
+        }
+        /// Сохранение заказов за весь период в файл-Pdf
+        public void SaveOrdersPeriodToPdfFile(ReportBindingModel model)
+        {
+            _saveToPdf.CreateDocOrderPeriod(new PdfInfoOrderPeriod
+            {
+                FileName = model.FileName,
+                Title = "Список заказов",
+                Orders = GetOrdersPeriod()
             });
         }
     }

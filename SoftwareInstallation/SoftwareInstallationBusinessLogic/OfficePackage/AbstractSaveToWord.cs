@@ -45,13 +45,48 @@ namespace SoftwareInstallationBusinessLogic.OfficePackage
             }
             SaveWord(info);
         }
+        public void CreateDocWarehouses(WordInfoWarehouse info)
+        {
+            CreateWord(new WordInfo()
+            {
+                FileName = info.FileName
+            });
+            CreateParagraph(new WordParagraph
+            {
+                Texts = new List<(string, WordTextProperties)> { (info.Title, new
+                WordTextProperties { Bold = true, Size = "24", }) },
+                TextProperties = new WordTextProperties
+                {
+                    Size = "24",
+                    JustificationType = WordJustificationType.Center
+                }
+            });
+            CreateTable(new List<string>() { "Название", "ФИО ответственного", "Дата создания" });
 
+            foreach (var warehouse in info.Warehouses)
+            {
+                CreateRow(new WordRowParameters()
+                {
+                    Texts = new List<string>()
+                  {
+                      warehouse.WarehouseName,
+                      warehouse.ResponsiblePerson,
+                      warehouse.DateCreate.ToShortDateString()
+                  }
+                });
+            }
+            SaveWord(new WordInfo()
+            {
+                FileName = info.FileName
+            });
+        }
         // Создание doc-файла
         protected abstract void CreateWord(WordInfo info);
         // Создание абзаца с текстом
         protected abstract void CreateParagraph(WordParagraph paragraph);
         // Сохранение файла
         protected abstract void SaveWord(WordInfo info);
-
+        protected abstract void CreateTable(List<string> columns);
+        protected abstract void CreateRow(WordRowParameters wordRow);
     }
 }

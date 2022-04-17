@@ -20,5 +20,17 @@ namespace SoftwareInstallationContracts.BusinessLogicsContracts
         void SavePackageComponentToExcelFile(ReportBindingModel model);
         /// Сохранение заказов в файл-Pdf
         void SaveOrdersToPdfFile(ReportBindingModel model);
+
+        /// Получение списка компонент с указанием, на каких складах
+        List<ReportWarehouseComponentViewModel> GetWarehouseComponent();
+        /// Получение списка заказов за весь период
+        List<ReportOrdersPeriodViewModel> GetOrdersPeriod();
+        /// Сохранение складов в файл-Word
+        void SaveWarehousesToWordFile(ReportBindingModel model);
+        /// Сохранение компонент с указанием складов в файл-Excel
+        void SaveWarehouseComponentToExcelFile(ReportBindingModel model);
+        /// Сохранение заказов за весь период в файл-Pdf
+        void SaveOrdersPeriodToPdfFile(ReportBindingModel model);
+
     }
 }

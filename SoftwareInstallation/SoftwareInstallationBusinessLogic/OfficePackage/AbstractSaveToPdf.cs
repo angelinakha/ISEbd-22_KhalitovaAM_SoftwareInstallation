@@ -36,6 +36,39 @@ namespace SoftwareInstallationBusinessLogic.OfficePackage
             }
             SavePdf(info);
         }
+        public void CreateDocOrderPeriod(PdfInfoOrderPeriod info)
+        {
+            CreatePdf(new PdfInfo()
+            {
+                FileName = info.FileName
+            });
+            CreateParagraph(new PdfParagraph
+            {
+                Text = info.Title,
+                Style = "NormalTitle"
+            });
+            CreateTable(new List<string> { "5cm", "5cm", "5cm" });
+            CreateRow(new PdfRowParameters
+            {
+                Texts = new List<string> { "Дата", "Количество заказов", "Сумма по заказам" },
+                Style = "NormalTitle",
+                ParagraphAlignment = PdfParagraphAlignmentType.Center
+            });
+            foreach (var order in info.Orders)
+            {
+                CreateRow(new PdfRowParameters
+                {
+                    Texts = new List<string> { order.Date.ToShortDateString(),
+                        order.Count.ToString(), order.Sum.ToString()},
+                    Style = "Normal",
+                    ParagraphAlignment = PdfParagraphAlignmentType.Left
+                });
+            }
+            SavePdf(new PdfInfo()
+            {
+                FileName = info.FileName
+            });
+        }
         // Создание doc-файла
         protected abstract void CreatePdf(PdfInfo info);
         // Создание параграфа с текстом
