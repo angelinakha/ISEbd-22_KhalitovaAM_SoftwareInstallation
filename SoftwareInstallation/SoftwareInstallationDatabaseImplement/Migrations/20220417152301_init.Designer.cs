@@ -10,7 +10,7 @@ using SoftwareInstallationDatabaseImplement;
 namespace SoftwareInstallationDatabaseImplement.Migrations
 {
     [DbContext(typeof(SoftwareInstallationDatabase))]
-    [Migration("20220415184754_init")]
+    [Migration("20220417152301_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

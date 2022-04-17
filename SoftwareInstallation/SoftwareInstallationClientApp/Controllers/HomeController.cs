@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.ViewModels;
+using SoftwareInstallationContracts.StoragesContracts;
 
 namespace SoftwareInstallationClientApp.Controllers
 {
