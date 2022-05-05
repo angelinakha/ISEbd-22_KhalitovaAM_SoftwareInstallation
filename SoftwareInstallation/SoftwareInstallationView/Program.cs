@@ -38,12 +38,6 @@ namespace SoftwareInstallationView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Container.Resolve<ClientStorage>().Insert(new SoftwareInstallationContracts.BindingModels.ClientBindingModel()
-            {
-                ClientFIO = "fio",
-                Email = "em",
-                Password = "1"
-            });
             Application.Run(Container.Resolve<FormMain>());        
         }
 
