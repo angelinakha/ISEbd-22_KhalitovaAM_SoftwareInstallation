@@ -121,6 +121,7 @@ rec.DateCreate.Date == model.DateCreate.Date) ||
                 PackageId = order.PackageId,
                 PackageName = context.Packages.FirstOrDefault(packageName => packageName.Id == order.PackageId)?.PackageName,
                 ClientId = order.ClientId,
+                ClientFIO = order.Client.ClientFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = Enum.GetName(order.Status),
