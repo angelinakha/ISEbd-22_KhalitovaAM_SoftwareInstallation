@@ -33,27 +33,28 @@ namespace SoftwareInstallationView
             this.buttonIssuedOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdPackage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакетыУстановокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокКомпонентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыПоПакетамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdPackage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnImplimenter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +98,7 @@ namespace SoftwareInstallationView
             this.ColumnIdPackage,
             this.ColumnName,
             this.ColumnClient,
+            this.ColumnImplimenter,
             this.ColumnCount,
             this.ColumnSum,
             this.ColumnStatus,
@@ -107,55 +109,6 @@ namespace SoftwareInstallationView
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.Size = new System.Drawing.Size(701, 303);
             this.dataGridView.TabIndex = 5;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "ColumnId";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 10;
-            // 
-            // ColumnIdPackage
-            // 
-            this.ColumnIdPackage.HeaderText = "ColumnIdPackage";
-            this.ColumnIdPackage.Name = "ColumnIdPackage";
-            this.ColumnIdPackage.Visible = false;
-            this.ColumnIdPackage.Width = 10;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Пакеты установок";
-            this.ColumnName.Name = "ColumnName";
-            // 
-            // ColumnClient
-            // 
-            this.ColumnClient.HeaderText = "Клиент";
-            this.ColumnClient.Name = "ColumnClient";
-            // 
-            // ColumnCount
-            // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.Name = "ColumnCount";
-            // 
-            // ColumnSum
-            // 
-            this.ColumnSum.HeaderText = "Сумма";
-            this.ColumnSum.Name = "ColumnSum";
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.HeaderText = "Статус";
-            this.ColumnStatus.Name = "ColumnStatus";
-            // 
-            // ColumnDateCreate
-            // 
-            this.ColumnDateCreate.HeaderText = "Дата создания";
-            this.ColumnDateCreate.Name = "ColumnDateCreate";
-            // 
-            // ColumnDateEnd
-            // 
-            this.ColumnDateEnd.HeaderText = "Дата выполнения";
-            this.ColumnDateEnd.Name = "ColumnDateEnd";
             // 
             // menuStrip
             // 
@@ -184,23 +137,30 @@ namespace SoftwareInstallationView
             // компонентыToolStripMenuItem
             // 
             this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.компонентыToolStripMenuItem.Text = "Компоненты";
             this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
             // 
             // пакетыУстановокToolStripMenuItem
             // 
             this.пакетыУстановокToolStripMenuItem.Name = "пакетыУстановокToolStripMenuItem";
-            this.пакетыУстановокToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пакетыУстановокToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.пакетыУстановокToolStripMenuItem.Text = "Пакеты установок";
             this.пакетыУстановокToolStripMenuItem.Click += new System.EventHandler(this.пакетыУстановокToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
+            // 
+            // исполнителиToolStripMenuItem
+            // 
+            this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
+            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.исполнителиToolStripMenuItem.Text = "Исполнители";
+            this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
             // 
             // пополнениеСкладаToolStripMenuItem
             // 
@@ -238,19 +198,66 @@ namespace SoftwareInstallationView
             this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
             this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click);
             // 
-            // исполнителиToolStripMenuItem
-            // 
-            this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
-            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.исполнителиToolStripMenuItem.Text = "Исполнители";
-            this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
-            // 
             // запускРаботToolStripMenuItem
             // 
             this.запускРаботToolStripMenuItem.Name = "запускРаботToolStripMenuItem";
             this.запускРаботToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.запускРаботToolStripMenuItem.Text = "Запуск работ";
             this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "ColumnId";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.Visible = false;
+            this.ColumnId.Width = 10;
+            // 
+            // ColumnIdPackage
+            // 
+            this.ColumnIdPackage.HeaderText = "ColumnIdPackage";
+            this.ColumnIdPackage.Name = "ColumnIdPackage";
+            this.ColumnIdPackage.Visible = false;
+            this.ColumnIdPackage.Width = 10;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Пакеты установок";
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnClient
+            // 
+            this.ColumnClient.HeaderText = "Клиент";
+            this.ColumnClient.Name = "ColumnClient";
+            // 
+            // ColumnImplimenter
+            // 
+            this.ColumnImplimenter.HeaderText = "Исполнитель";
+            this.ColumnImplimenter.Name = "ColumnImplimenter";
+            // 
+            // ColumnCount
+            // 
+            this.ColumnCount.HeaderText = "Количество";
+            this.ColumnCount.Name = "ColumnCount";
+            // 
+            // ColumnSum
+            // 
+            this.ColumnSum.HeaderText = "Сумма";
+            this.ColumnSum.Name = "ColumnSum";
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.HeaderText = "Статус";
+            this.ColumnStatus.Name = "ColumnStatus";
+            // 
+            // ColumnDateCreate
+            // 
+            this.ColumnDateCreate.HeaderText = "Дата создания";
+            this.ColumnDateCreate.Name = "ColumnDateCreate";
+            // 
+            // ColumnDateEnd
+            // 
+            this.ColumnDateEnd.HeaderText = "Дата выполнения";
+            this.ColumnDateEnd.Name = "ColumnDateEnd";
             // 
             // FormMain
             // 
@@ -290,16 +297,17 @@ namespace SoftwareInstallationView
         private System.Windows.Forms.ToolStripMenuItem компонентыПоПакетамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdPackage;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnClient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnImplimenter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
-        private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
     }
 }

@@ -19,6 +19,6 @@ namespace SoftwareInstallationDatabaseImplement.Models
         public virtual List<PackageComponent> PackageComponents { get; set; }
 
         [ForeignKey("PackageId")]
-        public virtual List<Order> Order { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

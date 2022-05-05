@@ -63,6 +63,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 PackageId = order.PackageId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -88,6 +89,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 PackageId = order.PackageId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -110,6 +112,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 PackageId = order.PackageId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

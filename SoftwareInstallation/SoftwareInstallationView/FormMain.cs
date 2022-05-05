@@ -47,7 +47,7 @@ namespace SoftwareInstallationView
                     dataGridView.Rows.Clear();
                     foreach (var order in list)
                     {
-                        dataGridView.Rows.Add(new object[] { order.Id, order.PackageId, order.PackageName, order.ClientFIO, order.Count, order.Sum,
+                        dataGridView.Rows.Add(new object[] { order.Id, order.PackageId, order.PackageName, order.ClientFIO, order.ImplementerFIO, order.Count, order.Sum,
                             order.Status,order.DateCreate, order.DateImplement});
                     }
                 }
