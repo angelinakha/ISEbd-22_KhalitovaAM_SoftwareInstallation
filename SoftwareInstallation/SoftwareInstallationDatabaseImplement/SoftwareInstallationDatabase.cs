@@ -15,11 +15,18 @@ namespace SoftwareInstallationDatabaseImplement
             }
             base.OnConfiguring(optionsBuilder);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().Property(m => m.ImplementerId).IsRequired(false);
+            modelBuilder.Entity<MessageInfo>().Property(m => m.ClientId).IsRequired(false);
+            base.OnModelCreating(modelBuilder);
+        }
         public virtual DbSet<Component> Components { set; get; }
         public virtual DbSet<Package> Packages { set; get; }
         public virtual DbSet<PackageComponent> PackageComponents { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
         public virtual DbSet<Client> Clients { set; get; }
         public virtual DbSet<Implementer> Implementers { set; get; }
+        public virtual DbSet<MessageInfo> MessagesInfo { set; get; }
     }
 }

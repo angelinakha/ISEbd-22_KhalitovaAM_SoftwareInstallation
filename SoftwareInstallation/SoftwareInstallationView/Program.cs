@@ -5,13 +5,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
+using System.Configuration;
+using System.Threading;
+
 
 using SoftwareInstallationBusinessLogic.BusinessLogics;
+using SoftwareInstallationBusinessLogic.MailWorker;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
 using SoftwareInstallationContracts.StoragesContracts;
 using SoftwareInstallationDatabaseImplement.Implements;
 using SoftwareInstallationBusinessLogic.OfficePackage;
 using SoftwareInstallationBusinessLogic.OfficePackage.Implements;
+using SoftwareInstallationContracts.BindingModels;
+
 
 namespace SoftwareInstallationView
 {
@@ -38,12 +44,21 @@ namespace SoftwareInstallationView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Container.Resolve<ClientStorage>().Insert(new SoftwareInstallationContracts.BindingModels.ClientBindingModel()
+
+            var mailSender = Container.Resolve<AbstractMailWorker>();
+            mailSender.MailConfig(new MailConfigBindingModel
             {
-                ClientFIO = "fio",
-                Email = "em",
-                Password = "1"
+                MailLogin = ConfigurationManager.AppSettings["MailLogin"],
+                MailPassword = ConfigurationManager.AppSettings["MailPassword"],
+                SmtpClientHost = ConfigurationManager.AppSettings["SmtpClientHost"],
+                SmtpClientPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
+                PopHost = ConfigurationManager.AppSettings["PopHost"],
+                PopPort =
+            Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
             });
+            // создаем таймер
+            var timer = new System.Threading.Timer(new TimerCallback(MailCheck), null, 0, 100000);
+     
             Application.Run(Container.Resolve<FormMain>());        
         }
 
@@ -80,8 +95,14 @@ namespace SoftwareInstallationView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWorkProcess, WorkModeling>(new
             HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMessageInfoStorage, MessageInfoStorage>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMessageInfoLogic,
+            MessageInfoLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractMailWorker, MailKitWorker>(new
+            SingletonLifetimeManager());
             return currentContainer;
         }
-
+        private static void MailCheck(object obj) => Container.Resolve<AbstractMailWorker>().MailCheck();
     }
 }
