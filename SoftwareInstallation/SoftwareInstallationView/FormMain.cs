@@ -189,5 +189,11 @@ namespace SoftwareInstallationView
             _workModeling.DoWork(_implementerLogic, _orderLogic);
             LoadData();
         }
+
+        private void выводПисемToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormMessagesInfo>();
+            form.ShowDialog();
+        }
     }
 }
