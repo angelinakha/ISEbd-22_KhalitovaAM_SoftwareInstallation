@@ -9,22 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
-using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
-
+using SoftwareInstallationContracts.BindingModels;
 
 namespace SoftwareInstallationView
 {
-    public partial class FormComponents : Form
+    public partial class FormClients : Form
     {
-        private readonly IComponentLogic _logic;
-        public FormComponents(IComponentLogic logic)
+
+        private readonly IClientLogic _logic;
+        public FormClients(IClientLogic logic)
         {
             InitializeComponent();
             _logic = logic;
         }
-
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormClients_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -37,33 +36,16 @@ namespace SoftwareInstallationView
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBoxIcon.Error);
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void button_update_Click(object sender, EventArgs e)
         {
-            var form = Program.Container.Resolve<FormComponent>();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-            }
+            LoadData();
         }
 
-        private void buttonRef_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                var form = Program.Container.Resolve<FormComponent>();
-                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    LoadData();
-                }
-            }
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void button_delete_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
@@ -74,7 +56,7 @@ namespace SoftwareInstallationView
                    Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        _logic.Delete(new ComponentBindingModel { Id = id });
+                        _logic.Delete(new ClientBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
@@ -84,11 +66,6 @@ namespace SoftwareInstallationView
                     LoadData();
                 }
             }
-        }
-
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
     }
 }

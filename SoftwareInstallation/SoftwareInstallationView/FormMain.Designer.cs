@@ -56,6 +56,7 @@ namespace SoftwareInstallationView
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выводПисемToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьБекапToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -172,7 +173,8 @@ namespace SoftwareInstallationView
             this.пополнениеСкладаToolStripMenuItem,
             this.отчетыToolStripMenuItem,
             this.запускРаботToolStripMenuItem,
-            this.выводПисемToolStripMenuItem});
+            this.выводПисемToolStripMenuItem,
+            this.создатьБекапToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(875, 24);
@@ -268,6 +270,13 @@ namespace SoftwareInstallationView
             this.выводПисемToolStripMenuItem.Text = "Вывод писем";
             this.выводПисемToolStripMenuItem.Click += new System.EventHandler(this.выводПисемToolStripMenuItem_Click);
             // 
+            // создатьБекапToolStripMenuItem
+            // 
+            this.создатьБекапToolStripMenuItem.Name = "создатьБекапToolStripMenuItem";
+            this.создатьБекапToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.создатьБекапToolStripMenuItem.Text = "Создать бекап";
+            this.создатьБекапToolStripMenuItem.Click += new System.EventHandler(this.создатьБекапToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -319,5 +328,6 @@ namespace SoftwareInstallationView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
         private System.Windows.Forms.ToolStripMenuItem выводПисемToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьБекапToolStripMenuItem;
     }
 }

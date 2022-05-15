@@ -24,13 +24,7 @@ namespace SoftwareInstallationView
         {
             try
             {
-                var list = _messageInfoLogic.Read(null);
-                if (list != null)
-                {
-                    dataGridView1.DataSource = list;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
+                Program.ConfigGrid(_messageInfoLogic.Read(null), dataGridView1);
             }
             catch (Exception ex)
             {

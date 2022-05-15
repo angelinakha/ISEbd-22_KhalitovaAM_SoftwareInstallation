@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using SoftwareInstallationContracts.Attributes;
+
 
 namespace SoftwareInstallationContracts.ViewModels
 {
     public class ClientViewModel
     {
+        [Column(title: "Номер", width: 70)]
         public int Id { get; set; }
-        [DisplayName("ФИО клиента")]
+        [Column(title: "ФИО клиента", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string ClientFIO { get; set; }
-        [DisplayName("Электронная почта")]
+        [Column(title: "Логин", width: 100)]
         public string Email { get; set; }
-        [DisplayName("Пароль")]
+        [Column(title: "Пароль", width: 100)]
         public string Password { get; set; }
     }
 }
