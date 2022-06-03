@@ -72,8 +72,8 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             var records = _backUpInfo.GetList<T>();
             var obj = new T();
             var jsonFormatter = new DataContractJsonSerializer(typeof(List<T>));
-            using var fs = new FileStream(string.Format("{0}/{1}.json",
-            folderName, obj.GetType().Name), FileMode.OpenOrCreate);
+            using var fs = new FileStream(string.Format("{0}/{1}.xml", folderName, 
+                obj.GetType().Name), FileMode.OpenOrCreate);
             jsonFormatter.WriteObject(fs, records);
         }
 

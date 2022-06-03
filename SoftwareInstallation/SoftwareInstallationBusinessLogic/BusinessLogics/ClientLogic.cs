@@ -15,7 +15,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
     {
         private readonly IClientStorage _clientStorage;
         private readonly int _passwordMaxLength = 50;
-        private readonly int _passwordMinLength = 10;
+        private readonly int _passwordMinLength = 7;
         public ClientLogic(IClientStorage clientStorage)
         {
             _clientStorage = clientStorage;
@@ -43,7 +43,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 throw new Exception("Уже есть клиент с таким ФИО");
             }
-            if (!Regex.IsMatch(model.Email, @"регулярное выражение"))
+            if (!Regex.IsMatch(model.Email, @"^[A-Za-z0-9]+(?:[._%+-])?[A-Za-z0-9._-]+[A-Za-z0-9]@[A-Za-z0-9]+(?:[.-])?[A-Za-z0-9._-]+\.[A-Za-z]{2,6}$"))
             {
                 throw new Exception("В качестве логина почта указана должна быть");
             }

@@ -44,9 +44,6 @@ namespace SoftwareInstallationView
         static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             var mailSender = Container.Resolve<AbstractMailWorker>();
             mailSender.MailConfig(new MailConfigBindingModel
             {
@@ -55,13 +52,14 @@ namespace SoftwareInstallationView
                 SmtpClientHost = ConfigurationManager.AppSettings["SmtpClientHost"],
                 SmtpClientPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
                 PopHost = ConfigurationManager.AppSettings["PopHost"],
-                PopPort =
-            Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
+                PopPort = Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
             });
             // создаем таймер
             var timer = new System.Threading.Timer(new TimerCallback(MailCheck), null, 0, 100000);
-     
-            Application.Run(Container.Resolve<FormMain>());        
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(Container.Resolve<FormMain>());
+
         }
 
         private static IUnityContainer BuildUnityContainer()
