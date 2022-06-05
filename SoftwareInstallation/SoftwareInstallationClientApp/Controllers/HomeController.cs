@@ -10,6 +10,7 @@ using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.ViewModels;
 using SoftwareInstallationContracts.StoragesContracts;
 
+
 namespace SoftwareInstallationClientApp.Controllers
 {
     public class HomeController : Controller

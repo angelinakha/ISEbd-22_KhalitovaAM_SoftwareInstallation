@@ -11,6 +11,8 @@ using Unity;
 
 using SoftwareInstallationContracts.BindingModels;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
+using SoftwareInstallationBusinessLogic.BusinessLogics;
+
 
 
 namespace SoftwareInstallationView
@@ -19,11 +21,15 @@ namespace SoftwareInstallationView
     {
         private readonly IOrderLogic _orderLogic;
         private readonly IReportLogic _reportLogic;
-        public FormMain(IOrderLogic orderLogic, IReportLogic reportLogic)
+        private readonly WorkModeling _workModeling;
+        private readonly IImplementerLogic _implementerLogic;
+        public FormMain(IOrderLogic orderLogic, IReportLogic reportLogic, WorkModeling workModeling, IImplementerLogic implementerLogic)
         {
             InitializeComponent();
             _orderLogic = orderLogic;
             _reportLogic = reportLogic;
+            _implementerLogic = implementerLogic;
+            _workModeling = workModeling;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -163,6 +169,18 @@ namespace SoftwareInstallationView
             var form = Program.Container.Resolve<FormReportOrders>();
             form.ShowDialog();
         }
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormClients>();
+            form.ShowDialog();
+        }
+
+        private void исполнителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormImplementers>();
+            form.ShowDialog();
+        }
         private void складыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Program.Container.Resolve<FormWarehouses>();
@@ -234,5 +252,11 @@ namespace SoftwareInstallationView
             form.ShowDialog();
         }
 
+
+        private void запускРаботToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _workModeling.DoWork(_implementerLogic, _orderLogic);
+            LoadData();
+        }
     }
 }

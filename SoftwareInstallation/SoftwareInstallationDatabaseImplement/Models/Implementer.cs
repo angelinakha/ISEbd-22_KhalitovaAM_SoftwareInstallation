@@ -8,17 +8,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoftwareInstallationDatabaseImplement.Models
 {
-    public class Package
+    public class Implementer
     {
         public int Id { get; set; }
-        [Required]
-        public string PackageName { get; set; }
-        [Required]
-        public decimal Price { get; set; }
-        [ForeignKey("PackageId")]
-        public virtual List<PackageComponent> PackageComponents { get; set; }
 
-        [ForeignKey("PackageId")]
-        public virtual List<Order> Orders { get; set; }
+        [Required]
+        public string ImplementerFIO { get; set; }
+
+        [Required]
+        public int WorkingTime { get; set; }
+
+        [Required]
+        public int PauseTime { get; set; }
+
+        [ForeignKey("ImplementerId")]
+        public List<Order> Orders { get; set; }
     }
 }

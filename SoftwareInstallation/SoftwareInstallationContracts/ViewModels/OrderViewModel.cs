@@ -18,6 +18,9 @@ namespace SoftwareInstallationContracts.ViewModels
         public int ClientId { get; set; }
         [DisplayName("ФИО клиента")]
         public string ClientFIO { get; set; }
+        public int? ImplementerId { get; set; }
+        [DisplayName("ФИО исполнителя")]
+        public string ImplementerFIO { get; set; }
         [DisplayName("Количество")]
         public int Count { get; set; }
         [DisplayName("Сумма")]
