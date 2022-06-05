@@ -258,7 +258,7 @@ namespace SoftwareInstallationFileImplement
                 xDocument.Save(WarehouseFileName);
             }
         }
-        }
+        
         private void SaveClients()
         {
             if (Clients != null)

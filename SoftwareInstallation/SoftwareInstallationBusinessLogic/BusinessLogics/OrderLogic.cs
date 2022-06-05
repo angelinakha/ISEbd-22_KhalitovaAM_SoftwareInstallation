@@ -70,6 +70,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 PackageId = order.PackageId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -95,6 +96,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 PackageId = order.PackageId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -117,6 +119,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 PackageId = order.PackageId,
                 Count = order.Count,
                 Sum = order.Sum,

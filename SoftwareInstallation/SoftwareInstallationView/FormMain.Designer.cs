@@ -149,8 +149,7 @@
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
             this.пакетыУстановокToolStripMenuItem,
-            this.складыToolStripMenuItem});
-            this.пакетыУстановокToolStripMenuItem,
+            this.складыToolStripMenuItem,
             this.клиентыToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
@@ -199,7 +198,7 @@
             this.списокЗаказовToolStripMenuItem,
             this.списокСкладовToolStripMenuItem,
             this.компонентыПоСкладамToolStripMenuItem,
-            this.заказыПоПериодамToolStripMenuItem});
+            this.заказыПоПериодамToolStripMenuItem });
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
@@ -316,7 +315,6 @@
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -348,10 +346,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
         private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокКомпонентовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem компонентыПоПакетамToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокСкладовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem компонентыПоСкладамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заказыПоПериодамToolStripMenuItem;

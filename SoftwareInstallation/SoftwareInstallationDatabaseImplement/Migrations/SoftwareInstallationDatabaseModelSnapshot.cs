@@ -190,7 +190,13 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
 
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", null)
+                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", "Package")
                         .WithMany("Order")
                         .HasForeignKey("PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -237,6 +243,11 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
                     b.Navigation("Component");
 
                     b.Navigation("Warehouse");
+                });
+
+            modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Client", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Component", b =>

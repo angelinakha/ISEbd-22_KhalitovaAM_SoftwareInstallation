@@ -11,7 +11,7 @@ namespace SoftwareInstallationDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-JDHLPBTR\SQLEXPRESS;Initial Catalog=SoftwareInstallationDatabaseHardS;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-JDHLPBTR\SQLEXPRESS;Initial Catalog=SoftwareInstallationDatabase5Hard;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -21,7 +21,6 @@ namespace SoftwareInstallationDatabaseImplement
         public virtual DbSet<Order> Orders { set; get; }
         public virtual DbSet<Warehouse> Warehouses { set; get; }
         public virtual DbSet<WarehouseComponent> WarehouseComponents { set; get; }
-
         public virtual DbSet<Client> Clients { set; get; }
     }
 }

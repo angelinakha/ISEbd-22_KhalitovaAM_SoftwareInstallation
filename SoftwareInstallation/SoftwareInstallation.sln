@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareInstallationDatabas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareInstallationRestApi", "SoftwareInstallationRestApi\SoftwareInstallationRestApi.csproj", "{A8945352-707A-4363-A3AC-265DC0E4F0CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareInstallationClientApp", "SoftwareInstallationClientApp\SoftwareInstallationClientApp.csproj", "{74D2CCA0-2007-4242-8243-8224C5FFDEC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareInstallationClientApp", "SoftwareInstallationClientApp\SoftwareInstallationClientApp.csproj", "{74D2CCA0-2007-4242-8243-8224C5FFDEC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareInstallationWarehouseApp", "SoftwareInstallationWarehouseApp\SoftwareInstallationWarehouseApp.csproj", "{33E8CA79-49DB-48B7-A4B9-AD2CCC754ABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{74D2CCA0-2007-4242-8243-8224C5FFDEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74D2CCA0-2007-4242-8243-8224C5FFDEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74D2CCA0-2007-4242-8243-8224C5FFDEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E8CA79-49DB-48B7-A4B9-AD2CCC754ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E8CA79-49DB-48B7-A4B9-AD2CCC754ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E8CA79-49DB-48B7-A4B9-AD2CCC754ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E8CA79-49DB-48B7-A4B9-AD2CCC754ABB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

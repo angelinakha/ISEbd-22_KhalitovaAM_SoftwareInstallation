@@ -34,9 +34,14 @@ namespace SoftwareInstallationRestApi
             services.AddTransient<IClientStorage, ClientStorage>();
             services.AddTransient<IOrderStorage, OrderStorage>();
             services.AddTransient<IPackageStorage, PackageStorage>();
+            services.AddTransient<IComponentStorage, ComponentStorage>();
+            services.AddTransient<IWarehouseStorage, WarehouseStorage>();
+
             services.AddTransient<IOrderLogic, OrderLogic>();
             services.AddTransient<IClientLogic, ClientLogic>();
             services.AddTransient<IPackageLogic, PackageLogic>();
+            services.AddTransient<IComponentLogic, ComponentLogic>();
+            services.AddTransient<IWarehouseLogic, WarehouseLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
