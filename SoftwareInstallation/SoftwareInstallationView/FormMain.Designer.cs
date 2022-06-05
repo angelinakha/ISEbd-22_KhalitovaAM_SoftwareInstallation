@@ -134,8 +134,8 @@
             this.компонентыToolStripMenuItem,
             this.пакетыУстановокToolStripMenuItem,
             this.клиентыToolStripMenuItem,
-            this.исполнителиToolStripMenuItem});       
             this.складыToolStripMenuItem,
+            this.исполнителиToolStripMenuItem});           
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";

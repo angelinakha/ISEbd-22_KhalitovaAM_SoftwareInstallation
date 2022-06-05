@@ -18,7 +18,7 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
         private readonly IOrderStorage _orderStorage;
         private readonly IWarehouseStorage _warehouseStorage;
         private readonly IPackageStorage _packageStorage;
-
+        private readonly object locker = new();
         public OrderLogic(IOrderStorage orderStorage, IWarehouseStorage warehouseStorage, IPackageStorage packageStorage)
         {
             _orderStorage = orderStorage;
@@ -51,6 +51,43 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
+            lock (locker)
+            {
+                OrderStatus status = OrderStatus.Выполняется;
+                var order = _orderStorage.GetElement(new OrderBindingModel
+                {
+                    Id = model.OrderId
+                });
+                if (order == null)
+                {
+                    throw new Exception("Заказ не найден");
+                }
+                if (!order.Status.Equals("Принят") && !order.Status.Equals("Требуются_материалы"))
+                {
+                    throw new Exception("Невозможно обработать заказ, заказ не в статусе  \"Принят\" или  \"Требуются_материалы\"");
+                }
+                var package = _packageStorage.GetElement(new PackageBindingModel { Id = order.PackageId });
+                if (!_warehouseStorage.WriteOffFromWarehouses(package.PackageComponents, order.Count))
+                {
+                    status = OrderStatus.Требуются_материалы;
+                    model.ImplementerId = null;
+                }
+                _orderStorage.Update(new OrderBindingModel
+                {
+                    Id = order.Id,
+                    ClientId = order.ClientId,
+                    PackageId = order.PackageId,
+                    ImplementerId = model.ImplementerId,
+                    Sum = order.Sum,
+                    Count = order.Count,
+                    DateCreate = order.DateCreate,
+                    DateImplement = DateTime.Now,
+                    Status = status
+                });
+            }
+        }
+        public void FinishOrder(ChangeStatusBindingModel model)
+        {
             var order = _orderStorage.GetElement(new OrderBindingModel
             {
                 Id = model.OrderId
@@ -59,36 +96,9 @@ namespace SoftwareInstallationBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не найден");
             }
-            if (!order.Status.Equals("Принят"))
+            if (order.Status.Equals("Требуются_материалы"))
             {
-                throw new Exception("Заказ не в статусе \"Принят\"");
-            }
-            if (!_warehouseStorage.WriteOffFromWarehouses(_packageStorage.GetElement(new PackageBindingModel { Id = order.PackageId }).PackageComponents, order.Count))
-            {
-                throw new Exception("Недостаточно компонентов");
-            }
-            _orderStorage.Update(new OrderBindingModel
-            {
-                Id = order.Id,
-                ClientId = order.ClientId,
-                PackageId = order.PackageId,
-                ImplementerId = model.ImplementerId,
-                Count = order.Count,
-                Sum = order.Sum,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
-        }
-        public void FinishOrder(ChangeStatusBindingModel model)
-        {
-            var  order = _orderStorage.GetElement(new OrderBindingModel
-            {
-                Id = model.OrderId
-            });
-            if (order == null)
-            {
-                throw new Exception("Заказ не найден");
+                return;
             }
             if (!order.Status.Equals("Выполняется"))
             {

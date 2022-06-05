@@ -245,14 +245,6 @@ namespace SoftwareInstallationView
             var form = Program.Container.Resolve<FormReportOrdersPeriod>();
             form.ShowDialog();
         }
-
-        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Program.Container.Resolve<FormClients>();
-            form.ShowDialog();
-        }
-
-
         private void запускРаботToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _workModeling.DoWork(_implementerLogic, _orderLogic);

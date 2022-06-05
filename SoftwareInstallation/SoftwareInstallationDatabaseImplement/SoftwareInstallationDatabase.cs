@@ -11,7 +11,7 @@ namespace SoftwareInstallationDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-JDHLPBTR\SQLEXPRESS;Initial Catalog=SoftwareInstallationDatabase5Hard;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-JDHLPBTR\SQLEXPRESS;Initial Catalog=SoftwareInstallationDatabase6Hard;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
