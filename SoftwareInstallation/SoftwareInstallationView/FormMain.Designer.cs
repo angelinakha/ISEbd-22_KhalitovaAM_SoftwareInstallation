@@ -48,6 +48,13 @@
             this.пакетыУстановокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.складыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пополнениеСкладаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокКомпонентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.компонентыПоПакетамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокСкладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.компонентыПоСкладамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заказыПоПериодамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +176,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.пополнениеСкладаToolStripMenuItem1});
+            this.пополнениеСкладаToolStripMenuItem1,
+            this.отчетыToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(757, 24);
@@ -189,21 +197,21 @@
             // компонентыToolStripMenuItem
             // 
             this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.компонентыToolStripMenuItem.Text = "Компоненты";
             this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
             // 
             // пакетыУстановокToolStripMenuItem
             // 
             this.пакетыУстановокToolStripMenuItem.Name = "пакетыУстановокToolStripMenuItem";
-            this.пакетыУстановокToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пакетыУстановокToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.пакетыУстановокToolStripMenuItem.Text = "Пакеты установок";
             this.пакетыУстановокToolStripMenuItem.Click += new System.EventHandler(this.пакетыУстановокToolStripMenuItem_Click);
             // 
             // складыToolStripMenuItem
             // 
             this.складыToolStripMenuItem.Name = "складыToolStripMenuItem";
-            this.складыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.складыToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.складыToolStripMenuItem.Text = "Склады";
             this.складыToolStripMenuItem.Click += new System.EventHandler(this.складыToolStripMenuItem_Click);
             // 
@@ -213,6 +221,61 @@
             this.пополнениеСкладаToolStripMenuItem1.Size = new System.Drawing.Size(129, 20);
             this.пополнениеСкладаToolStripMenuItem1.Text = "Пополнение склада";
             this.пополнениеСкладаToolStripMenuItem1.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem1_Click);
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокКомпонентовToolStripMenuItem,
+            this.компонентыПоПакетамToolStripMenuItem,
+            this.списокЗаказовToolStripMenuItem,
+            this.списокСкладовToolStripMenuItem,
+            this.компонентыПоСкладамToolStripMenuItem,
+            this.заказыПоПериодамToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // списокКомпонентовToolStripMenuItem
+            // 
+            this.списокКомпонентовToolStripMenuItem.Name = "списокКомпонентовToolStripMenuItem";
+            this.списокКомпонентовToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.списокКомпонентовToolStripMenuItem.Text = "Список компонентов";
+            this.списокКомпонентовToolStripMenuItem.Click += new System.EventHandler(this.списокКомпонентовToolStripMenuItem_Click_1);
+            // 
+            // компонентыПоПакетамToolStripMenuItem
+            // 
+            this.компонентыПоПакетамToolStripMenuItem.Name = "компонентыПоПакетамToolStripMenuItem";
+            this.компонентыПоПакетамToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.компонентыПоПакетамToolStripMenuItem.Text = "Компоненты по пакетам";
+            this.компонентыПоПакетамToolStripMenuItem.Click += new System.EventHandler(this.компонентыПоПакетамToolStripMenuItem_Click_1);
+            // 
+            // списокЗаказовToolStripMenuItem
+            // 
+            this.списокЗаказовToolStripMenuItem.Name = "списокЗаказовToolStripMenuItem";
+            this.списокЗаказовToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
+            this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click_1);
+            // 
+            // списокСкладовToolStripMenuItem
+            // 
+            this.списокСкладовToolStripMenuItem.Name = "списокСкладовToolStripMenuItem";
+            this.списокСкладовToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.списокСкладовToolStripMenuItem.Text = "Список складов";
+            this.списокСкладовToolStripMenuItem.Click += new System.EventHandler(this.списокСкладовToolStripMenuItem_Click);
+            // 
+            // компонентыПоСкладамToolStripMenuItem
+            // 
+            this.компонентыПоСкладамToolStripMenuItem.Name = "компонентыПоСкладамToolStripMenuItem";
+            this.компонентыПоСкладамToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.компонентыПоСкладамToolStripMenuItem.Text = "Компоненты по складам";
+            this.компонентыПоСкладамToolStripMenuItem.Click += new System.EventHandler(this.компонентыПоСкладамToolStripMenuItem_Click);
+            // 
+            // заказыПоПериодамToolStripMenuItem
+            // 
+            this.заказыПоПериодамToolStripMenuItem.Name = "заказыПоПериодамToolStripMenuItem";
+            this.заказыПоПериодамToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.заказыПоПериодамToolStripMenuItem.Text = "Заказы по периодам";
+            this.заказыПоПериодамToolStripMenuItem.Click += new System.EventHandler(this.заказыПоПериодамToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -260,5 +323,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
         private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокКомпонентовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem компонентыПоПакетамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокСкладовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem компонентыПоСкладамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заказыПоПериодамToolStripMenuItem;
     }
 }

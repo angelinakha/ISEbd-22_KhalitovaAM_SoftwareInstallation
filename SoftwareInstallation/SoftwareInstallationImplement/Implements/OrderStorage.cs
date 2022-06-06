@@ -36,7 +36,7 @@ namespace SoftwareInstallationListImplement.Implements
             var result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.PackageId.ToString().Contains(model.PackageId.ToString()))
+                if (order.PackageId.ToString().Contains(model.PackageId.ToString()) || order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
                 {
                     result.Add(CreateModel(order));
                 }
@@ -128,7 +128,7 @@ namespace SoftwareInstallationListImplement.Implements
                 PackageName = packageName,
                 Count = order.Count,
                 Sum = order.Sum,
-                Status = order.Status,
+                Status = Enum.GetName(order.Status),
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement
             };

@@ -10,6 +10,8 @@ using SoftwareInstallationBusinessLogic.BusinessLogics;
 using SoftwareInstallationContracts.BusinessLogicsContracts;
 using SoftwareInstallationContracts.StoragesContracts;
 using SoftwareInstallationDatabaseImplement.Implements;
+using SoftwareInstallationBusinessLogic.OfficePackage;
+using SoftwareInstallationBusinessLogic.OfficePackage.Implements;
 
 namespace SoftwareInstallationView
 {
@@ -58,6 +60,14 @@ namespace SoftwareInstallationView
             currentContainer.RegisterType<IPackageLogic, PackageLogic>(new
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWarehouseLogic, WarehouseLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportLogic, ReportLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToWord, SaveToWord>(new 
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToPdf, SaveToPdf>(new 
             HierarchicalLifetimeManager());
             return currentContainer;
         }

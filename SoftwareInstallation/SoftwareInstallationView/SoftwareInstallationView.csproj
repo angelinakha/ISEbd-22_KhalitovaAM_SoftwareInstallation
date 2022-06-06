@@ -12,6 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.16" />
     <PackageReference Include="Unity" Version="5.11.10" />
   </ItemGroup>
 
@@ -20,6 +21,15 @@
     <ProjectReference Include="..\SoftwareInstallationDatabaseImplement\SoftwareInstallationDatabaseImplement.csproj" />
     <ProjectReference Include="..\SoftwareInstallationFileImplement\SoftwareInstallationFileImplement.csproj" />
     <ProjectReference Include="..\SoftwareInstallationImplement\SoftwareInstallationListImplement.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ReportOrder.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ReportOrdersPeriod.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

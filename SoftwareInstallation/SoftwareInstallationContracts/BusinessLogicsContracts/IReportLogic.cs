@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SoftwareInstallationContracts.BindingModels;
+using SoftwareInstallationContracts.ViewModels;
+
+namespace SoftwareInstallationContracts.BusinessLogicsContracts
+{
+    public interface IReportLogic
+    {
+        /// Получение списка компонент с указанием, в каких изделиях используются
+        List<ReportPackageComponentViewModel> GetPackageComponent();
+        /// Получение списка заказов за определенный период
+        List<ReportOrdersViewModel> GetOrders(ReportBindingModel model);
+        /// Сохранение компонент в файл-Word
+        void SaveComponentsToWordFile(ReportBindingModel model);
+        /// Сохранение компонент с указаеним пакетов в файл-Excel
+        void SavePackageComponentToExcelFile(ReportBindingModel model);
+        /// Сохранение заказов в файл-Pdf
+        void SaveOrdersToPdfFile(ReportBindingModel model);
+
+        /// Получение списка компонент с указанием, на каких складах
+        List<ReportWarehouseComponentViewModel> GetWarehouseComponent();
+        /// Получение списка заказов за весь период
+        List<ReportOrdersPeriodViewModel> GetOrdersPeriod();
+        /// Сохранение складов в файл-Word
+        void SaveWarehousesToWordFile(ReportBindingModel model);
+        /// Сохранение компонент с указанием складов в файл-Excel
+        void SaveWarehouseComponentToExcelFile(ReportBindingModel model);
+        /// Сохранение заказов за весь период в файл-Pdf
+        void SaveOrdersPeriodToPdfFile(ReportBindingModel model);
+
+    }
+}

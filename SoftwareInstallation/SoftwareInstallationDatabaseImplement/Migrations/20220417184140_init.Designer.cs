@@ -10,8 +10,8 @@ using SoftwareInstallationDatabaseImplement;
 namespace SoftwareInstallationDatabaseImplement.Migrations
 {
     [DbContext(typeof(SoftwareInstallationDatabase))]
-    [Migration("20220307115658_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220417184140_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,11 +163,13 @@ namespace SoftwareInstallationDatabaseImplement.Migrations
 
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", null)
+                    b.HasOne("SoftwareInstallationDatabaseImplement.Models.Package", "Package")
                         .WithMany("Order")
                         .HasForeignKey("PackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Package");
                 });
 
             modelBuilder.Entity("SoftwareInstallationDatabaseImplement.Models.PackageComponent", b =>

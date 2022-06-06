@@ -30,7 +30,7 @@ namespace SoftwareInstallationFileImplement.Implements
                 return null;
             }
             return source.Orders
-               .Where(recOrder => recOrder.PackageId == model.PackageId)
+               .Where(rec => rec.Id.Equals(model.Id) || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
                .Select(CreateModel)
                .ToList();
         }
@@ -90,7 +90,7 @@ namespace SoftwareInstallationFileImplement.Implements
                 PackageId = order.PackageId,
                 Count = order.Count,
                 Sum = order.Sum,
-                Status = order.Status,
+                Status = Enum.GetName(order.Status),
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement
             };
