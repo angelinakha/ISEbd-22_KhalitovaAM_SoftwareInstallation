@@ -69,6 +69,10 @@ namespace SoftwareInstallationView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<AbstractSaveToPdf, SaveToPdf>(new 
             HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientLogic, ClientLogic>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientStorage, ClientStorage>(new
+            HierarchicalLifetimeManager());
             return currentContainer;
         }
 
